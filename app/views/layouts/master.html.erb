@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Stories</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+
+<%= stylesheet_link_tag "default", "pagination" %>
+<%= javascript_include_tag :all %>
+
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    $('#locale').change(function(){
+    	$(this).parents('form').submit();    	
+    });
+    $('#locale').val('<%= cookies[:locale] || I18n.default_locale %>');
+  });  
+</script>
+
+</head>
+
+<body>
+
+<!-- Loading div, not part of the page -->
+<div id="loading">
+	<%= "#{t('loading')}..." %>
+</div>
+<!-- --------------------------------- -->
+
+<div id="wrapper">
+<!-- start header -->
+<div id="logo">
+	<h1><a href="#"><%= link_to "#{APP_NAME}(BETA)", home_path %></a></h1>
+	<h2> &raquo; </h2>
+</div>
+<div id="header">
+	<div id="menu">
+		<ul>
+			<li><%= link_to t('home'), home_path %></li>			
+			<li><%= link_to "<<-- #{t('tell_your_story')} -->>", new_post_path %></li>
+			<li><span id="menu_spacer"><%= logged_in? ? "&nbsp;" * 90 : "&nbsp;" * 15  %></span></li>
+			<li>
+			  <% form_tag '/accounts/set_user_locale' do %>
+          <%= select_tag 'locale', options_for_select(locales) %>
+        <% end %>
+    	</li>
+    	<li>
+    	  &nbsp;&nbsp;&nbsp;
+    	</li>
+    	<li>
+    	  <%= render :partial => "sessions/new" %>
+    	</li>    	
+    	<li>
+    	  <%= render :partial => "users/new" %>
+    	</li>
+		</ul>
+	</div>
+</div>
+<!-- end header -->
+</div>
+<!-- start page -->
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<%= yield %>
+	</div>
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			 <li id="search">				
+				<%= render :partial => "posts/search_by_title" %>
+			</li> 
+			<li>
+				<h2><%= t('top_x_voted_users', :top_voted_users_number => TOP_VOTED_USERS_NUMBER)  %></h2>
+				<ul>
+				  <span id="user_nick_votes">
+					  <%= render :partial => "users/nick_votes", :collection => top_voted_users, :as => :user %>
+					</span>
+				</ul>
+			</li>
+			<li>
+				<h2><%= t('tags') %></h2>
+				<ul>
+				  <%= render :partial => "tags/tag", :collection => tags_for_list %>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+<!-- start footer -->
+<!-- <div id="footer">
+	<p id="legal">( c ) 2008. All Rights Reserved.</p>
+</div> -->
+<!-- end footer -->
+</body>
+</html>

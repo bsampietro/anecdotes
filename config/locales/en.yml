@@ -1,0 +1,59 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  post: "Post"
+  direct_link: "Direct Link"
+  ago: "ago"
+  posted: "Posted"
+  select: "Select one"
+  loading: "Loading"
+  tags: "Tags"
+  no_title: "No Title"
+  home: "Home"
+  tell_your_story: "Tell Your Story!!"
+  top_x_voted_users: "Top {{top_voted_users_number}} Voted Users"
+  sign_out: "Sign Out"
+  user_invalid: "Nick or Password invalid"
+  user_saved: "User SAVED, don't loose the password because you won't be able to recover it"
+  nick_exists: "Nick already exists"
+  nick: "Nick"
+  password: "Pass"
+  password_confirmation: "Pass conf"
+  anonymous: "anonymous"
+  post_as: "Post As"
+  back: "back home"
+  search : "Search"
+  search_by_title: "Search by Title"
+  login: "Login"
+  already_voted: "It's a good story... but come on!! you have already voted."
+  posting_anonymously: "You are posting anonymously, login to be YOU !!"
+  create: "Create"
+  
+  
+  #tags
+  anything: "Anything"
+  sin: "Sin"
+  life_sucks: "Life Sucks"
+  joke: "Joke"
+  love: "Love"
+  passion: "Passion"
+  sex: "Sex"
+  lust: "Lust"
+  economy: "Economy"
+  politics: "Politics"
+  hate: "Hate"
+  hot_cocoa: "Hot Cocoa"
+  music: "Music"
+  technology: "Technology"
+  
+  
+  
+  activerecord:
+    errors:        
+      messages:
+        blank: "is required" 
+    models:
+      post: "Post"
+

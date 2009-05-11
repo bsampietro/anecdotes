@@ -1,0 +1,28 @@
+<div class="post">
+	<h1 class="title"><%= sanitize post.title %> </h1>
+	<h3 class="author"> by <%= link_to post.user.nick, show_by_user_post_path(post.user) %> </h3>
+	<div class="entry">
+		<p> <%= sanitize(htmlize_carriage_returns(post.text)) %></p>
+	</div>
+	
+	<%= link_to ("Delete", post_path(post), :method => :delete) if admin_logged? %>
+	
+	<div class="meta">
+		<p class="byline"> <%= t('posted') %> <%= time_ago_in_words post.created_at %> <%= t('ago') %> </p>
+    <p class="tag"> <%= t(post.tag.ki) %> </p>
+		<p class="links"> 		 
+  		
+      <%= link_to url_for(post_url(post)), post_path(post) %> <b> | </b> &nbsp;
+		  		  
+		  <%= link_to_remote("Vote", :url => post_post_info_path(post), :method => :put, 
+		    :loading => "show_loading()", :complete => "hide_loading()",
+		    :before => "vote_link = this", :success => "change_vote_value()") %>  
+		    
+		    <span id="vote_refresh"><%= post.info.votes %></span> <!-- <b> | </b> -->
+  		  
+  		  <!-- <a href="#" class="comments">Comments (32)</a> -->
+    </p>
+	</div>
+</div>
+
+

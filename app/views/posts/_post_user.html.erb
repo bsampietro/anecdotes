@@ -1,0 +1,9 @@
+<% if logged_in? %>
+  <%= label_tag 'post_as', t('post_as') %>: &nbsp;
+  <%= current_user.nick %><%= radio_button_tag :user_id, current_user.id, true %>
+  <%= t('anonymous') %><%= radio_button_tag :user_id, ANONYMOUS_USER_ID %>
+<% else %>
+  <%= t('posting_anonymously') %>
+<% end %>
+      
+      

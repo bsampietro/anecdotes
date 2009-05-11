@@ -1,0 +1,8 @@
+if @user
+  page.replace_html "sessions_form", link_to_remote(t('sign_out'), :url => session_path(0), :method => :delete)
+  page.replace_html "choose_post_user", :partial => "posts/post_user"
+  page.replace_html "register_link", ""
+  page.replace_html "menu_spacer", "&nbsp;" * 90
+else
+  page.replace_html "js_insert", javascript_tag("show_hide_invalid_session()")
+end

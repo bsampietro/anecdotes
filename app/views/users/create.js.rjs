@@ -1,0 +1,6 @@
+if @saved_succesfully
+  page.replace_html "js_insert", javascript_tag("show_success_erase_and_hide();")
+  #page.replace_html "sessions_form", link_to_remote(t('sign_out'), :url => session_path(0), :method => :delete)
+else
+  page.replace_html "js_insert", javascript_tag("show_fail('#{error_messages_list(@user)}');")
+end

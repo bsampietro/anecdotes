@@ -1,0 +1,66 @@
+<div id="register_link">
+  <%= link_to_function "Register", "show_user_form()" unless logged_in?  %>
+</div>
+
+<div id="user_form">
+  <% form_remote_for User.new do |f| %>
+    <p>
+      <%= label_tag :nick %> <%= f.text_field :nick, :class => "new_user_text_fields" %>
+    </p>
+    <p>
+      <%= label_tag :password, t('password') %> <%= f.password_field :password, :class => "new_user_text_fields" %>
+    </p>
+    <p>
+      <%= label_tag :password, t('password_confirmation') %><%= f.password_field :password_confirmation, :class => "new_user_text_fields" %>
+    </p>
+    <p>
+      <%= submit_tag t('create'), :class => "user_create_button" %>
+    </p>
+    <p>
+      <%= link_to_function "Close", "hide_user_form()" %> 
+    </p>
+  <% end %>
+
+  <div id="user_message">
+
+  </div>
+
+  <div id="js_insert">
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){    
+    $('#user_password').attr("title", "<%= t('password') %>");
+    $('#user_password_confirmation').attr("title", "<%= t('password_confirmation') %>");
+  });  
+
+  function show_user_form(){
+    $('#user_form').css('visibility', 'visible');
+    $('#user_form').slideDown(500);    
+  }
+  
+  function hide_user_form(){    
+    $('#user_form').slideUp(500);
+    setTimeout("$('#user_form').css('visibility', 'hidden');", 500);    
+  }
+  
+  function show_success_erase_and_hide(){
+    $('#user_message').html("<%= t('user_saved') %>");
+    $('#user_nick').val('');
+    $('#user_password').val('');
+    $('#user_password_confirmation').val('');
+    setTimeout("$('#user_form').slideUp(500);", 5500);
+    setTimeout("$('#user_form').css('visibility', 'hidden');", 6000);
+    setTimeout("$('#user_message').html('');", 6500);        
+  }
+  
+  function show_fail(message){
+    $('#user_message').html(message);
+    $('#user_password').val('');
+    $('#user_password_confirmation').val('');
+  }
+  
+</script>

@@ -1,0 +1,38 @@
+<div id="sessions_form">
+  <% if !logged_in? %>
+    <% form_remote_tag :url => sessions_path, :loading => "show_loading()", :complete => "hide_loading()" do %>
+      <%= text_field_tag :nick, nil, :class => "login_fields" %>
+      <%= password_field_tag :password, nil, :class => "login_fields" %>
+      <%= submit_tag t('login') %>
+    <% end %>
+
+    <div id="invalid_session">
+      <%= t('user_invalid') %>
+    </div>
+
+    <div id="js_insert">
+
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        add_initial_text("nick", "<%= t('nick') %>");
+        $('#password').attr("title", "<%= t('password') %>");        
+      });
+      
+      function show_hide_invalid_session(){
+        $('#invalid_session').css('visibility', 'visible');
+        $('#invalid_session').slideDown(500);    
+        setTimeout("$('#invalid_session').slideUp(500);", 1500);
+        setTimeout("$('#invalid_session').css('visibility', 'hidden');", 2000);       
+        $('#password').val('');   
+        $('#nick').select();
+      }
+    </script>
+
+  <% else %>
+    <%= link_to_remote(t('sign_out'), :url => session_path(0), :method => :delete, 
+      :loading => "show_loading()", :complete => "hide_loading()") %>
+  <% end %>
+</div>
+

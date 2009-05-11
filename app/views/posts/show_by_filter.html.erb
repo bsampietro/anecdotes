@@ -1,0 +1,49 @@
+<% form_remote_tag(:url => "/posts/show_by_filter", :html => {:id => "show_by_filter_form", :method => :get}, :method => :get, 
+                    :loading => "show_loading();", :complete => "hide_loading();") do %>
+  <p>
+    <%= label_tag "order" %> <%= select_tag :order, options_for_select(possible_ordering) %>
+    <%= label_tag "post_language" %> <%= select_tag :post_language, options_for_select(post_languages_for_select) %>
+    <%= label_tag "tag" %> <%= select_tag :tag, options_for_select(tags_for_filter) %>
+  </p>
+<% end %>
+
+<div id="paginate_refresh">
+  <%= will_paginate(@posts, :renderer => 'RemoteLinkRenderer', :loading => "show_loading()", :complete => "hide_loading()") %>
+</div>
+
+<div id="posts_refresh">
+  <%= render :partial => "post", :collection => @posts %>
+</div>
+
+
+<%= render :partial => "vote_scripts" %>
+
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    $('#order').change(function(){
+    	$('#show_by_filter_form').submit();    	
+    });    
+    $('#order').val('<%= params[:order] %>');
+    
+    $('#post_language').change(function(){
+    	$('#show_by_filter_form').submit();    	
+    });    
+    $('#post_language').val('<%= params[:post_language] %>'); 
+       
+    $('#tag').change(function(){
+    	$('#show_by_filter_form').submit();    	
+    });    
+    $('#tag').val('<%= params[:tag] %>'); 
+
+  });  
+
+  function force_filter_post(tag_link){
+    var tag_id = $(tag_link).next().val(); //get tag id from hidden next to link
+    $('#tag').val(tag_id);
+    $('#show_by_filter_form').submit();
+  }
+
+</script>
+
+
+

@@ -1,0 +1,6 @@
+if @succesfull_vote
+  page.replace_html("script", javascript_tag("var votes = #{@post.info.votes}"))
+  page.replace_html("user_nick_votes", :partial => "users/nick_votes", :collection => top_voted_users, :as => :user)
+else
+  page.replace_html("script", javascript_tag("var votes = #{@post.info.votes}; alert(\"#{t('already_voted')}\")"))
+end

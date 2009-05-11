@@ -1,0 +1,8 @@
+asociaciones de post:
+  post_language: no es un modelo de active record, las opciones de lenguajes para desplegar estan en el posts_helper
+    se podria agregar un metodo al modelo post que diga en base al codigo del lenguaje, el texto del lenguaje
+    el valor por defecto es "Who cares?" y el codigo es "wc", esto se toma en cuenta cuando se construyen las conditions del
+      modelo post
+    
+  tag: es un modelo de active record, automaticamente active record agrega un metodo al modelo post para determinar su tag
+    el valor por defecto es "Anything", su codigo es "1" y esta en la base (como "masterdata").
