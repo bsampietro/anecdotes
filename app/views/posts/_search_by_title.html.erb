@@ -1,5 +1,5 @@
 <h2><%= t('search_by_title') %></h2>
-<% form_tag show_by_title_posts_path, :method => :get do %>
+<% form_tag show_by_filter_posts_path, :method => :get do %>
   <fieldset>
     <%= text_field_tag :title, nil, :class => "search_by_title_text" %>
     <%= submit_tag t('search') %>

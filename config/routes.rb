@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => "posts", :action => "show_by_filter"
   
-  map.resources :posts, :collection => {:show_by_filter => :get, :show_by_title => :get}, :member => {:show_by_user => :get} do |post|
+  map.resources :posts, :collection => {:show_by_filter => :get}, :member => {:show_by_user => :get} do |post|
     post.resource :post_info, :controller => "posts_info", :only => :update
   end
   map.resources :sessions, :only => [:create, :destroy]

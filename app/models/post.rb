@@ -13,15 +13,6 @@ class Post < ActiveRecord::Base
   
   attr_accessible :title, :text, :tag_id, :language_code
   
-  def before_save
-    self.title = I18n.translate('no_title') if self.title.blank?
-  end
-  
-  def before_validation
-    self.title.strip!; self.title.capitalize!
-		self.text.strip!; self.text.capitalize!
-  end
-  
   def self.generate_conditions(params)
     order = "created_at DESC"        
     conditions = ""
@@ -59,5 +50,19 @@ class Post < ActiveRecord::Base
   def validate    
     self.errors.add(:tag_id) if !self.tag
   end
-
+  
+  def before_validation
+    self.title.strip!; self.title.capitalize!
+		self.text.strip!; self.text.capitalize!
+  end
+  
+  def before_save
+    self.title = I18n.translate('no_title') if self.title.blank?
+  end
+  
+  def after_save
+    self.create_info
+    self.tag.increment!(:number_of_stories)
+  end
+  
 end
