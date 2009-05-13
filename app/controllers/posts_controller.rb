@@ -56,6 +56,16 @@ class PostsController < ApplicationController
     end
   end
   
+  def show_by_title    
+    filters = Post.generate_conditions(params)
+    @posts = Post.paginate(:conditions => filters[:conditions], :order => "created_at DESC", 
+              :page => params[:page], :per_page => RPP_POSTS)
+    respond_to do |format|
+      format.html {render :action => "show_by_filter"}
+      format.js {render :action => "show_by_filter"}
+    end
+  end
+  
   protected
   
    def save_url

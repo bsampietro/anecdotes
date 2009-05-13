@@ -8,7 +8,7 @@ class PostLanguage
   end
   
   def self.all
-    [PostLanguage.new("wc", "Who Cares?"), PostLanguage.new("en", "English"), PostLanguage.new("es", "Español")]
+    [PostLanguage.new("wc", I18n.translate('who_cares')), PostLanguage.new("en", "English"), PostLanguage.new("es", "Español")]
   end
 
 end

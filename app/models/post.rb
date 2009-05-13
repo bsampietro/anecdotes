@@ -39,13 +39,18 @@ class Post < ActiveRecord::Base
     end    
     
     if params[:post_language] =~ /\A\w{2}\Z/ && params[:post_language] != "wc"
-      conditions = "language_code = '#{params[:post_language]}'"
+      conditions << " language_code = '#{params[:post_language]}' AND"
     end
     
-    if params[:tag] =~ /\A\d{1,2}\Z/ && params[:tag] != "1"
-      conditions = "tag_id = '#{params[:tag]}'"
+    if params[:tag] =~ /\A\d{1,2}\Z/ && params[:tag] != ANYTHING_TAG_ID.to_s
+      conditions << " tag_id = '#{params[:tag]}' AND"
     end
     
+     if params[:title] =~ /\A\w+\Z/ 
+      conditions << " title like '%#{params[:title]}%' AND"
+    end
+    
+    conditions.chomp!("AND"); conditions.strip!
     {:order => order, :conditions => conditions}
   end
   

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090510023723) do
+ActiveRecord::Schema.define(:version => 20090512201358) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -21,11 +21,16 @@ ActiveRecord::Schema.define(:version => 20090510023723) do
     t.integer  "user_id"
   end
 
+  add_index "posts", ["tag_id"], :name => "index_posts_on_tag_id"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
   create_table "posts_info", :force => true do |t|
     t.integer "post_id"
     t.integer "votes",      :default => 0
     t.text    "voters_ips"
   end
+
+  add_index "posts_info", ["post_id"], :name => "index_posts_info_on_post_id"
 
   create_table "tags", :force => true do |t|
     t.string  "ki"

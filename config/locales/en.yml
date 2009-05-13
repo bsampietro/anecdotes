@@ -30,6 +30,15 @@ en:
   already_voted: "It's a good story... but come on!! you have already voted."
   posting_anonymously: "You are posting anonymously, login to be YOU !!"
   create: "Create"
+    
+  #post order
+  created_at: "Created At"
+  first_created: "First Created"
+  most_voted: "Most Voted"
+  random: "Random"
+  
+  #language
+  who_cares: "Who Cares?"
   
   
   #tags
