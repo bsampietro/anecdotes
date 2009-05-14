@@ -91,10 +91,17 @@ legend {
 	display: none;
 }
 
-input, textarea, select {
+input, textarea {
 	font-family: "Georgia", "Serif", "DejaVu Sans", "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #333333;
+}
+
+select {
+  font-family: "Georgia", "Serif", "DejaVu Sans", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+  width: 105px;
 }
 
 .story_title{
@@ -531,6 +538,10 @@ html>body #footer {
 
 .search_by_title_text {
   width: 150px;  
-
 }
+
+.center_text {
+  text-align: center;
+}
+
 

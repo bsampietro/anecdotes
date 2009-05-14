@@ -23,7 +23,7 @@
     <%= f.label :tag_id %> 
     <%= f.select :tag_id, tags_for_select %> &nbsp;&nbsp;
     
-    <%= f.label :language_code %> 
+    <%= f.label :language_code, t('post_language') %> 
     <%= f.select :language_code, post_languages_for_select %> &nbsp;&nbsp;
   
     <%= submit_tag t('post') %>    

@@ -40,7 +40,7 @@
 		<ul>
 			<li><%= link_to t('home'), home_path %></li>			
 			<li><%= link_to "<<-- #{t('tell_your_story')} -->>", new_post_path %></li>
-			<li><span id="menu_spacer"><%= logged_in? ? "&nbsp;" * 90 : "&nbsp;" * 15  %></span></li>
+			<li><span id="menu_spacer"><%= logged_in? ? "&nbsp;" * 90 : "&nbsp;" * 10  %></span></li>
 			<li>
 			  <% form_tag '/accounts/set_user_locale' do %>
           <%= select_tag 'locale', options_for_select(locales) %>

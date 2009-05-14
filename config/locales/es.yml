@@ -1,0 +1,85 @@
+es:
+  post: "Post"
+  direct_link: "Link Directo"
+  ago: "Atras"
+  posted: "Posteado"
+  select: "Seleccione"
+  loading: "Cargando"
+  tags: "Tags"
+  no_title: "Sin Titulo"
+  home: "Inicio"
+  tell_your_story: "Cuenta tu historia!!"
+  top_x_voted_users: "Los {{top_voted_users_number}} Usuarios mas Votados"
+  sign_out: "Salir"
+  user_invalid: "Nick o Contraseña invalida"
+  user_saved: "Usuario GUARDADO, no pierdas el password por que no vas a poder recuperarlo"
+  nick_exists: "Nick existe"
+  nick: "Nick"
+  password: "Pass"
+  password_confirmation: "Pass conf"
+  anonymous: "anonymous"
+  post_as: "Posteado Como"
+  back: "volver a inicio"
+  search : "Buscar"
+  search_by_title: "Buscar por titulo"
+  login: "Iniciar"
+  already_voted: "Es una buena historia... pero ya votaste!!"
+  posting_anonymously: "Estas posteando como anonimo, inicia sesión para ser TU!!"
+  create: "Crear"
+  no_posts: "Ninguna historia concuerda"
+  post_language: "Lenguaje"
+  register: "Registrarse"
+  order: "Orden"  
+    
+  #post order
+  created_at: "Creado"
+  first_created: "Primero creado"
+  most_voted: "Mas votados"
+  random: "Aleatorio"
+  
+  #language
+  who_cares: "No importa"
+  
+  
+  #tags
+  anything: "Miscelaneo"
+  sin: "Pecado"
+  life_sucks: "La vida apesta"
+  joke: "Chiste"
+  love: "Amor"
+  passion: "Pasion"
+  sex: "Sexo"
+  lust: "Lujuria"
+  economy: "Economia"
+  politics: "Politica"
+  hate: "Odio"
+  hot_cocoa: "Hot Cocoa"
+  music: "Musica"
+  technology: "Tecnologia"
+  work: "Trabajo"
+  
+  
+
+  activerecord:
+    errors:
+      template: 
+        header:
+          one: "1 error prohibio que se guardara este {{model}}"
+          other: "{{count}} errores prohibieron que se guardara este {{model}}"
+        body: "Hubo problemas con los siguientes campos:"
+      messages:
+        blank: "es requerido" 
+        confirmation: "no coincide con confirmacion"
+        taken: "ya existe"
+        too_short: "es muy corto"
+        too_long: "excede el maximo permitido"
+        invalid: "invalido"
+    models:
+      post: "post"
+    attributes:
+      post:    
+        title: "Titulo"
+        text: "Texto"
+        language_code: "Lenguaje"
+        user_id: "Usuario"
+

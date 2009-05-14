@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   def destroy
     if admin_logged?
       Post.delete(params[:id])
-      redirect_to :back
+      redirect_to session[:home_previous_page]
     end
   end
   

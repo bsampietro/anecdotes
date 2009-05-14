@@ -30,6 +30,10 @@ en:
   already_voted: "It's a good story... but come on!! you have already voted."
   posting_anonymously: "You are posting anonymously, login to be YOU !!"
   create: "Create"
+  no_posts: "No story match"
+  post_language: "Language"
+  register: "Register"  
+  order: "Order"  
     
   #post order
   created_at: "Created At"
