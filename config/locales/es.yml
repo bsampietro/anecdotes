@@ -30,6 +30,9 @@ es:
   post_language: "Lenguaje"
   register: "Registrarse"
   order: "Orden"  
+  title: "Título"
+  text: "Texto"  
+  post: "Postear"
     
   #post order
   created_at: "Creado"
@@ -82,4 +85,43 @@ es:
         text: "Texto"
         language_code: "Lenguaje"
         user_id: "Usuario"
+        
+  date:
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Setiembre, Octubre, Noviembre, Diciembre]
+    order: [ :day, :month, :year ]
+    
+    
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one: "menos de 1 segundo"
+        other: "menos de {{count}} segundos"
+      x_seconds:
+        one: "1 segundo"
+        other: "{{count}} segundos"
+      less_than_x_minutes:
+        one: "menos de 1 minuto"
+        other: "menos de {{count}} minutos"
+      x_minutes:
+        one: "1 minuto"
+        other: "{{count}} minutos"
+      about_x_hours:
+        one: "1 hora"
+        other: "{{count}} horas"
+      x_days:
+        one: "1 dia"
+        other: "{{count}} dias"
+      about_x_months:
+        one: "1 mes"
+        other: "{{count}} meses"
+      x_months:
+        one: "1 mes"
+        other: "{{count}} meses"
+      about_x_years:
+        one: "1 año"
+        other: "{{count}} años"
+      over_x_years:
+        one: "mas de 1 año"
+        other: "mas de {{count}} años"        
 

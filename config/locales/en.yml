@@ -34,6 +34,9 @@ en:
   post_language: "Language"
   register: "Register"  
   order: "Order"  
+  title: "Title"
+  text: "Text"
+  post: "Post"
     
   #post order
   created_at: "Created At"
