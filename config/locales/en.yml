@@ -37,6 +37,7 @@ en:
   title: "Title"
   text: "Text"
   post: "Post"
+  vote: "Vote"
     
   #post order
   created_at: "Created At"

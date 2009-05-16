@@ -33,6 +33,7 @@ es:
   title: "Título"
   text: "Texto"  
   post: "Postear"
+  vote: "Votar"
     
   #post order
   created_at: "Creado"

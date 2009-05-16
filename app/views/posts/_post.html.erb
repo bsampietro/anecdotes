@@ -5,7 +5,7 @@
 		<p> <%= sanitize(htmlize_carriage_returns(post.text)) %></p>
 	</div>
 	
-	<%= link_to ("Delete", post_path(post), :method => :delete) if admin_logged? %>
+	<%= link_to ("Delete", post_path(post), :method => :delete, :confirm => "Really?") if admin_logged? %>
 	
 	<div class="meta">
 		<p class="byline"> <%= t('posted') %> <%= time_ago_in_words post.created_at %> <%= t('ago') %> </p>
@@ -14,7 +14,7 @@
   		
       <%= link_to url_for(post_url(post)), post_path(post) %> <b> | </b> &nbsp;
 		  		  
-		  <%= link_to_remote("Vote", :url => post_post_info_path(post), :method => :put, 
+		  <%= link_to_remote(t('vote'), :url => post_post_info_path(post), :method => :put, 
 		    :loading => "show_loading()", :complete => "hide_loading()",
 		    :before => "vote_link = this", :success => "change_vote_value()") %>  
 		    

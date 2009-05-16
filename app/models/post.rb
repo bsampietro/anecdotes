@@ -65,4 +65,9 @@ class Post < ActiveRecord::Base
     self.tag.increment!(:number_of_stories)
   end
   
+  def after_destroy
+    self.tag.decrement!(:number_of_stories)
+    self.user.decrement!(:votes, self.info.votes)
+  end
+  
 end
