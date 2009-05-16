@@ -26,17 +26,17 @@
     $('#order').change(function(){
     	$('#show_by_filter_form').submit();    	
     });    
-    $('#order').val('<%= params[:order] %>');
+    $('#order').val('<%= params[:order] || STANDARD_ORDER %>');
     
     $('#post_language').change(function(){
     	$('#show_by_filter_form').submit();    	
     });    
-    $('#post_language').val('<%= params[:post_language] %>'); 
+    $('#post_language').val('<%= params[:post_language] || STANDARD_POST_LANGUAGE_CODE %>'); 
        
     $('#tag').change(function(){
     	$('#show_by_filter_form').submit();    	
     });    
-    $('#tag').val('<%= params[:tag] %>'); 
+    $('#tag').val('<%= params[:tag] || ANYTHING_TAG_ID %>'); 
 
   });  
 
