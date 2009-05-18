@@ -1,3 +1,3 @@
 page.replace_html "paginate_refresh", will_paginate(@posts, :renderer => 'RemoteLinkRenderer', :loading => "show_loading()", :complete => "hide_loading()")
-page.replace_html "posts_refresh", :partial => "post", :collection => @posts
+page.replace_html "posts_refresh", :partial => "posts/post", :collection => @posts
 

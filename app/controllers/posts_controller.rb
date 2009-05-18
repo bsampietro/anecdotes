@@ -1,9 +1,16 @@
 class PostsController < ApplicationController
     
-  before_filter :save_url, :only => :show_by_filter  
+  before_filter :save_url, :only => :index  
     
   def index
-    redirect_to home_path
+    filters = Post.generate_conditions(params)
+    @posts = Post.paginate(:joins => :info, 
+              :conditions => filters[:conditions], :order => filters[:order],
+              :page => params[:page], :per_page => RPP_POSTS)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end   
     
   def show
@@ -31,26 +38,6 @@ class PostsController < ApplicationController
     if admin_logged?
       Post.destroy(params[:id])
       redirect_to session[:home_previous_page]
-    end
-  end
-  
-  def show_by_filter
-    filters = Post.generate_conditions(params)
-    @posts = Post.paginate(:joins => :info, 
-              :conditions => filters[:conditions], :order => filters[:order],
-              :page => params[:page], :per_page => RPP_POSTS)
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-  
-  def show_by_user
-    @posts = Post.paginate(:conditions => ["user_id = ?", params[:id]], :order => "created_at DESC", 
-              :page => params[:page], :per_page => RPP_POSTS)
-    respond_to do |format|
-      format.html {render :action => "show_by_filter"}
-      format.js {render :action => "show_by_filter"}
     end
   end
     
