@@ -3,7 +3,6 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #0BA1DE url(../images/img01.gif) repeat-x left top;
-	/* background: #99FFCC repeat-x left top; */
 	font-size: 14px;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	text-align: justify;
@@ -92,11 +91,17 @@ legend {
 	display: none;
 }
 
-input, textarea, select {
+input, textarea {
 	font-family: "Georgia", "Serif", "DejaVu Sans", "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #333333;
-	/* border: solid 1px; */
+}
+
+select {
+  font-family: "Georgia", "Serif", "DejaVu Sans", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+  width: 105px;
 }
 
 .story_title{
@@ -498,14 +503,11 @@ html>body #footer {
 	visibility: hidden;
 	position: absolute;
 	z-index: 10; 
-  /* background-color: #FFFFCC; */
-  background-color: white;
+  background-color: #0BA1DB;
   border-left: solid 1px;
   border-right: solid 1px;
   border-bottom: solid 1px;
-  color: #000000; 
-  /* width: 200px; 
-  background: #0BA1DE; */
+  color: white; 
 }
 
 .login_fields {
@@ -521,7 +523,7 @@ html>body #footer {
 
 #user_message {
   clear: left;
-  color: #0BA1DE;
+  color: white;
   margin: 5px;
   padding: 5px;
 }
@@ -536,6 +538,10 @@ html>body #footer {
 
 .search_by_title_text {
   width: 150px;  
-
 }
+
+.center_text {
+  text-align: center;
+}
+
 

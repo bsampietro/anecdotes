@@ -1,4 +1,4 @@
 page.replace_html "sessions_form", :partial => "new"
 page.replace_html "choose_post_user", :partial => "posts/post_user"
-page.replace_html "register_link", link_to_function("Register", "show_user_form()")
-page.replace_html "menu_spacer", "&nbsp;" * 15
+page.replace_html "register_link", link_to_function(t('register'), "show_user_form()")
+page.replace_html "menu_spacer", "&nbsp;" * 10

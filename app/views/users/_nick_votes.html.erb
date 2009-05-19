@@ -1,3 +1,3 @@
-<li><%= link_to "#{user.nick}(#{user.votes})", show_by_user_post_path(user.id) %>
+<li><%= link_to "#{user.nick}(#{user.votes})", show_posts_user_path(user) %>
 
 <%= hidden_field_tag "user_id", user.id %> 

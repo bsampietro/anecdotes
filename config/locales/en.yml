@@ -12,7 +12,7 @@ en:
   tags: "Tags"
   no_title: "No Title"
   home: "Home"
-  tell_your_story: "Tell Your Story!!"
+  tell_your_story: "Tell Yours"
   top_x_voted_users: "Top {{top_voted_users_number}} Voted Users"
   sign_out: "Sign Out"
   user_invalid: "Nick or Password invalid"
@@ -23,13 +23,30 @@ en:
   password_confirmation: "Pass conf"
   anonymous: "anonymous"
   post_as: "Post As"
-  back: "back home"
+  back: "back"
   search : "Search"
   search_by_title: "Search by Title"
   login: "Login"
   already_voted: "It's a good story... but come on!! you have already voted."
   posting_anonymously: "You are posting anonymously, login to be YOU !!"
   create: "Create"
+  no_posts: "No story match"
+  post_language: "Language"
+  register: "Register"  
+  order: "Order"  
+  title: "Title"
+  text: "Text"
+  post: "Post"
+  vote: "Vote"
+    
+  #post order
+  created_at: "Created At"
+  first_created: "First Created"
+  most_voted: "Most Voted"
+  random: "Random"
+  
+  #language
+  who_cares: "Who Cares?"
   
   
   #tags
@@ -47,6 +64,7 @@ en:
   hot_cocoa: "Hot Cocoa"
   music: "Music"
   technology: "Technology"
+  work: "Work"
   
   
   

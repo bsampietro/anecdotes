@@ -7,20 +7,11 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :text
   
-  #validates_length_of :text, :minimum => xx :maximum => xx
-  #validates_inclusion_of :tag_id, :in => %w(1 2 3)
-  #validates_inclusion_of :language_code, :in => %w(1 2 3)
+  #validates_length_of :title, :minimum => MIN_POST_TITLE_LETTERS, :maximum => MAX_POST_TITLE_LETTERS
+  #validates_length_of :text, :minimum => MIN_POST_TEXT_LETTERS :maximum => MAX_POST_TEXT_LETTERS
+  validates_inclusion_of :language_code, :in => %w(wc en es)
   
   attr_accessible :title, :text, :tag_id, :language_code
-  
-  def before_save
-    self.title = I18n.translate('no_title') if self.title.blank?
-  end
-  
-  def before_validation
-    self.title.strip!; self.title.capitalize!
-		self.text.strip!; self.text.capitalize!
-  end
   
   def self.generate_conditions(params)
     order = "created_at DESC"        
@@ -39,14 +30,44 @@ class Post < ActiveRecord::Base
     end    
     
     if params[:post_language] =~ /\A\w{2}\Z/ && params[:post_language] != "wc"
-      conditions = "language_code = '#{params[:post_language]}'"
+      conditions << " language_code = '#{params[:post_language]}' AND"
     end
     
-    if params[:tag] =~ /\A\d{1,2}\Z/ && params[:tag] != "1"
-      conditions = "tag_id = '#{params[:tag]}'"
+    if params[:tag] =~ /\A\d{1,2}\Z/ && params[:tag] != ANYTHING_TAG_ID.to_s
+      conditions << " tag_id = '#{params[:tag]}' AND"
     end
     
+     if params[:title] =~ /\A\w+\Z/ 
+      conditions << " title like '%#{params[:title]}%' AND"
+    end
+    
+    conditions.chomp!("AND"); conditions.strip!
     {:order => order, :conditions => conditions}
   end
-
+  
+  protected
+  
+  def validate    
+    self.errors.add(:tag_id) if !self.tag
+  end
+  
+  def before_validation
+    self.title.strip!; self.title.capitalize!
+		self.text.strip!; self.text.capitalize!
+  end
+  
+  def before_save
+    self.title = I18n.translate('no_title') if self.title.blank?
+  end
+  
+  def after_save
+    self.create_info
+    self.tag.increment!(:number_of_stories)
+  end
+  
+  def after_destroy
+    self.tag.decrement!(:number_of_stories)
+    self.user.decrement!(:votes, self.info.votes)
+  end
+  
 end

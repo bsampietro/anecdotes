@@ -8,5 +8,14 @@ class UsersController < ApplicationController
       format.js {render :action => "create"}
     end
   end
+  
+  def show_posts
+    @posts = Post.paginate(:conditions => ["user_id = ?", params[:id]], :order => "created_at DESC", 
+              :page => params[:page], :per_page => RPP_POSTS)
+    respond_to do |format|
+      format.html {render :template => "posts/index"}
+      format.js {render :template => "posts/index"}
+    end
+  end
 
 end

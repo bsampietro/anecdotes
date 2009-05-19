@@ -7,11 +7,11 @@
 
 <% form_for @post do |f| %>
   <p>
-    <%= f.label :title %> <br/>
+    <%= f.label :title, t('title') %> <br/>
     <%= f.text_field :title, :class => "story_title" %>
   </p>
   <p>
-    <%= f.label :text %> <br/>
+    <%= f.label :text, t('text') %> <br/>
     <%= f.text_area :text, :class => "story_text" %>    
   </p>
   <p>    
@@ -23,7 +23,7 @@
     <%= f.label :tag_id %> 
     <%= f.select :tag_id, tags_for_select %> &nbsp;&nbsp;
     
-    <%= f.label :language_code %> 
+    <%= f.label :language_code, t('post_language') %> 
     <%= f.select :language_code, post_languages_for_select %> &nbsp;&nbsp;
   
     <%= submit_tag t('post') %>    
