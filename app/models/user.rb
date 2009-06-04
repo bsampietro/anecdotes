@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   validates_presence_of :nick, :password
-  validates_uniqueness_of :nick
+  validates_uniqueness_of :nick, :case_sensitive => false
   validates_confirmation_of :password
   
   validates_exclusion_of :nick, :in => %w(nick apodo anonimo anonymous admin superuser)
@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   end
   
   def before_validation
-    self.nick.strip!
-    self.nick.downcase!
+    self.nick.strip! if self.nick
+    self.nick.downcase! if self.nick
   end
   
 end

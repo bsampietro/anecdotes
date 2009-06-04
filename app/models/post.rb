@@ -52,8 +52,10 @@ class Post < ActiveRecord::Base
   end
   
   def before_validation
-    self.title.strip!; self.title.capitalize!
-		self.text.strip!; self.text.capitalize!
+    self.title.strip! if self.title
+    self.title.capitalize if self.title
+		self.text.strip! if self.text
+		self.text.capitalize! if self.text
   end
   
   def before_save
