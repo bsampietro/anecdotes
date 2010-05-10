@@ -39,8 +39,4 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  config.gem "thoughtbot-factory_girl",
-             :lib    => "factory_girl",
-             :source => "http://gems.github.com"
-
 end
