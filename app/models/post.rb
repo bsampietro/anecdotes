@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
         when "mv"
           order = "votes DESC"
         when "rd"
-          order = "RAND()"
+          order = "#{self.column_names.rand}"
         when "io"
           order = "created_at"
       end
